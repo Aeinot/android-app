@@ -1,5 +1,6 @@
 package fr.gaulupeau.apps.Poche.ui;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,11 +13,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.Collections;
 import java.util.EnumSet;
 
 import fr.gaulupeau.apps.InThePoche.R;
+import fr.gaulupeau.apps.Poche.App;
 import fr.gaulupeau.apps.Poche.events.ArticlesChangedEvent;
 import fr.gaulupeau.apps.Poche.events.FeedsChangedEvent;
 
@@ -114,7 +119,99 @@ public class ArticleListsFragment extends Fragment implements Sortable, Searchab
         TabLayout tabLayout = (TabLayout)view.findViewById(R.id.articles_list_tab_layout);
         tabLayout.setupWithViewPager(viewPager);
 
-        viewPager.setCurrentItem(1);
+        // CUSTOM
+        String[] navLabels = new String[3];
+        navLabels[0] = App.getInstance().getString(R.string.feedName_unread);
+        navLabels[1] = App.getInstance().getString(R.string.feedName_favorites);
+        navLabels[2] = App.getInstance().getString(R.string.feedName_archived);
+
+        int[] navIconsSelected = new int[3];
+        navIconsSelected[0] = R.drawable.ic_home_solid_black_24dp;
+        navIconsSelected[1] = R.drawable.ic_star_solid_black_24dp;
+        navIconsSelected[2] = R.drawable.ic_archive_black_24dp;
+
+        int[] navIcons = new int[3];
+        navIcons[0] = R.drawable.ic_home_line_gray_24dp;
+        navIcons[1] = R.drawable.ic_star_border_grey_24dp;
+        navIcons[2] = R.drawable.ic_archive_gray_24dp;
+
+        // loop through all tabLayout tabs
+        for (int i = 0; i < tabLayout.getTabCount(); i++) {
+            // inflate the Parent LinearLayout Container for the tab
+            // from the layout nav_tab.xml file that we created 'R.layout.nav_tab
+            LinearLayout tab = (LinearLayout) inflater.inflate(R.layout.custom_tab_layout, null);
+
+            // get child TextView and ImageView from this layout for the icon and label
+            TextView tab_label = (TextView) tab.findViewById(R.id.nav_label);
+            ImageView tab_icon = (ImageView) tab.findViewById(R.id.nav_icon);
+
+            // set the label text by getting the actual string value by its id
+            // by getting the actual resource value `getResources().getString(string_id)`
+            tab_label.setText(navLabels[i]);
+
+            // set the home to be active at first
+            if(i == 0){
+                tab_label.setTextColor(Color.BLACK);
+                tab_icon.setImageResource(navIconsSelected[i]);
+            }else{
+                tab_label.setTextColor(Color.GRAY);
+                tab_icon.setImageResource(navIcons[i]);
+            }
+
+
+            // finally publish this custom view to tabLayout tab
+            tabLayout.getTabAt(i).setCustomView(tab);
+        }
+
+        tabLayout.addOnTabSelectedListener(
+                new TabLayout.ViewPagerOnTabSelectedListener(viewPager) {
+
+                    @Override
+                    public void onTabSelected(TabLayout.Tab tab) {
+                        super.onTabSelected(tab);
+
+                        // 1. get the custom View you've added
+                        View tabView = tab.getCustomView();
+
+                        // get inflated children Views the icon and the label by their id
+                        TextView tab_label = (TextView) tabView.findViewById(R.id.nav_label);
+                        ImageView tab_icon = (ImageView) tabView.findViewById(R.id.nav_icon);
+
+                        // change the label color, by getting the color resource value
+                        tab_label.setTextColor(Color.BLACK);
+                        // change the image Resource
+                        // i defined all icons in an array ordered in order of tabs appearances
+                        // call tab.getPosition() to get active tab index.
+                        tab_icon.setImageResource(navIconsSelected[tab.getPosition()]);
+                    }
+
+                    // do as the above the opposite way to reset tab when state is changed
+                    // as it not the active one any more
+                    @Override
+                    public void onTabUnselected(TabLayout.Tab tab) {
+                        super.onTabUnselected(tab);
+                        View tabView = tab.getCustomView();
+                        TextView tab_label = (TextView) tabView.findViewById(R.id.nav_label);
+                        ImageView tab_icon = (ImageView) tabView.findViewById(R.id.nav_icon);
+
+                        // back to the black color
+                        tab_label.setTextColor(Color.GRAY);
+                        // and the icon resouce to the old black image
+                        // also via array that holds the icon resources in order
+                        // and get the one of this tab's position
+                        tab_icon.setImageResource(navIcons[tab.getPosition()]);
+                    }
+
+                    @Override
+                    public void onTabReselected(TabLayout.Tab tab) {
+                        super.onTabReselected(tab);
+                    }
+                }
+        );
+
+        // ENDCUSTOM
+
+        viewPager.setCurrentItem(0); // CUSTOM : valeur par défaut = 1
 
         return view;
     }

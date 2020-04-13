@@ -137,7 +137,7 @@
     <string name="manageTags_textField_hint">Un ou plusieurs tags séparés par des virgules</string>
     <string name="manageTags_addNew">Ajouter</string>
     <string name="manageTags_currentTags">Tags sélectionnés :</string>
-    <string name="content_estimatedReadingTime">Temps de lecture estimé : %s min</string>
+    <string name="content_estimatedReadingTime">%s min</string>
     <string name="lastUpdateTimeLabel">Dernière mise à jour : %s</string>
     <string name="listItem_estimatedReadingTime">%d min</string>
     <string name="navigation_drawer_open">Ouvrir le menu de navigation</string>

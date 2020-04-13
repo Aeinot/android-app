@@ -146,7 +146,7 @@
     <string name="manageTags_textField_hint">One or more tags separated by commas</string>
     <string name="manageTags_addNew">Add</string>
     <string name="manageTags_currentTags">Selected tags:</string>
-    <string name="content_estimatedReadingTime">Estimated reading time: %s min</string>
+    <string name="content_estimatedReadingTime">%s min</string>
     <string name="lastUpdateTimeLabel">Last update: %s</string>
     <string name="listItem_estimatedReadingTime">%d min</string>
 

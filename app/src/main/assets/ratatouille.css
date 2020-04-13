@@ -4,6 +4,48 @@
   and normalize.css
 */
 
+/*=============================================================*/
+
+@font-face {
+    font-family: "Blanco";
+    src:url("file:///android_asset/fonts/BlancoOSFWeb-Regular.eot") format("eot")
+}
+
+@font-face {
+    font-family: "Blanco";
+    font-weight: bold;
+    src:url("file:///android_asset/fonts/BlancoOSFWeb-Bold.eot") format("eot")
+}
+
+@font-face {
+    font-family: "Blanco";
+    font-style: italic;
+    src:url("file:///android_asset/fonts/BlancoOSFWeb-Italic.eot") format("eot")
+}
+
+@font-face {
+    font-family: "Blanco";
+    font-style: italic;
+    font-weight: bold;
+    src:url("file:///android_asset/fonts/BlancoOSFWeb-BoldItalic.eot") format("eot")
+}
+
+@font-face {
+    font-family: "Graphik";
+    src: url("file:///android_asset/fonts/graphik_regular.otf");
+}
+@font-face {
+     font-family: "Graphik";
+     src: url("file:///android_asset/fonts/graphik_bold.otf");
+     font-weight: bold;
+ }
+
+ @font-face {
+     font-family: "Graphik";
+     src: url("file:///android_asset/fonts/graphik_medium.otf");
+     font-weight: 500;
+ }
+
 * {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
@@ -11,20 +53,117 @@
 }
 
 html {
-  font-family: sans-serif; /* 1 */
+  font-family: "Blanco" !important; /* 1 */
   -ms-text-size-adjust: 100%; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 
 body {
-  font-size: 1em;
+  font-size: 1.1em;
   line-height:1.5;
   margin: 0;
+  background-color: white;
 }
 
 /* ==========================================================================
    Mise en forme
    ========================================================================== */
+
+#main {
+   margin-left: 5%;
+   margin-right: 5%;
+   padding-right: 0%;
+   position: relative;
+   z-index: 10;
+   padding-bottom: 1em;
+ }
+
+#content img {
+   margin-left: -5.55%;
+   margin-right: -5.55%;
+   max-width: 111.10%;
+   width: 111.10%;
+   max-height: 50% !important;
+ }
+
+#content iframe {
+   margin-left: -5.55%;
+   margin-right: -5.55%;
+   max-width: 111.10%;
+   width: 111.10%;
+   max-height: 50% !important;
+ }
+
+.mbm {
+    text-align: center !important;
+    margin-top: 52px;
+    color: rgb(130, 130, 130);
+ }
+
+
+
+.mbm h1 {
+    text-align: center;
+    padding-bottom: 20px;
+    font-size: 1.4em !important;
+    font-weight: 500;
+ }
+
+.mbm h1:first-child {
+    font-family: "Graphik";
+    line-height: 1.2;
+    color: rgb(51, 51, 51) !important;
+}
+
+h2, h3, h5, h5 {
+    font-weight: 500;
+    font-family: "Graphik";
+    color: rgb(51, 51, 51) !important;
+}
+
+h2, h3 {
+    font-size: 1.4em !important;
+}
+
+h4 {
+    font-size: 1.15em !important;
+}
+
+h5 {
+   font-size: 1.1em !important;
+   font-weight: 500;
+   font-family: "Graphik";
+   color: rgb(51, 51, 51) !important;
+}
+
+
+ .domain {
+     text-align: center !important;
+ }
+
+.domain a {
+    text-align: center !important;
+    text-decoration: none;
+    font-style: normal;
+    color: rgb(130, 130, 130);
+}
+
+.header-text {
+    font-size: 0.9em
+}
+
+article p {
+    font-family: "Blanco" !important; /* 1 */
+    font-weight: 300;
+    font-size: 1.05em !important;
+    line-height: 1.5 !important;
+    color: rgb(51, 51, 51) !important;
+}
+
+article a {
+    text-decoration: underline !important;
+    color: rgb(51, 51, 51) !important;
+}
 
 h1:first-child,
 h2:first-child,

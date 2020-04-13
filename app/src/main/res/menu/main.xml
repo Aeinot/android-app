@@ -3,17 +3,17 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_main_search"
-        android:title="@string/menu_lists_search"
-        android:icon="?attr/icon_search"
+        android:icon="@drawable/ic_search_gray_24dp"
         android:orderInCategory="5"
-        app:showAsAction="collapseActionView|ifRoom"
-        app:actionViewClass="androidx.appcompat.widget.SearchView"/>
+        android:title="@string/menu_lists_search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="collapseActionView|ifRoom" />
     <item
         android:id="@+id/menu_main_changeSortOrder"
-        android:title="@string/menu_lists_changeSortOrder"
-        android:icon="?attr/icon_sort"
+        android:icon="@drawable/ic_sort_gray_24dp"
         android:orderInCategory="10"
-        app:showAsAction="ifRoom"/>
+        android:title="@string/menu_lists_changeSortOrder"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menu_main_syncQueue"
         android:title="@string/menu_syncLocalChanges"

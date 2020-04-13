@@ -14,9 +14,10 @@ import static fr.gaulupeau.apps.Poche.data.ListTypes.LIST_TYPE_UNREAD;
 class ArticleListsPagerAdapter extends CachingPagerAdapter {
 
     // TODO: private; configurable
+    // CUSTOM !!
     static int[] PAGES = {
-            LIST_TYPE_FAVORITES,
             LIST_TYPE_UNREAD,
+            LIST_TYPE_FAVORITES,
             LIST_TYPE_ARCHIVED
     };
 

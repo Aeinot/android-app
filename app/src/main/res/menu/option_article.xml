@@ -6,30 +6,30 @@
     <item
         android:id="@+id/menuArticleMarkAsRead"
         android:title="@string/btnMarkRead"
-        android:icon="?attr/icon_read"
+        android:icon="@drawable/ic_archive_line_gray_24dp"
         app:showAsAction="always"/>
     <item
         android:id="@+id/menuArticleMarkAsUnread"
         android:title="@string/btnMarkUnread"
-        android:icon="?attr/icon_read_undo"
+        android:icon="@drawable/ic_archive_gray_24dp"
         app:showAsAction="always"
         android:visible="false"/>
     <item
         android:id="@+id/menuArticleFavorite"
         android:title="@string/add_to_favorites"
-        android:icon="?attr/icon_favorite"
-        app:showAsAction="ifRoom"/>
+        android:icon="@drawable/ic_star_border_grey_24dp"
+        app:showAsAction="always"/>
     <item
         android:id="@+id/menuArticleUnfavorite"
         android:title="@string/remove_from_favorites"
-        android:icon="?icon_favorite_undo"
-        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_star_solid_gray_24dp"
+        app:showAsAction="always"
         android:visible="false"/>
     <item
         android:id="@+id/menuShare"
         android:title="@string/menuShare"
-        android:icon="@android:drawable/ic_menu_share"
-        app:showAsAction="ifRoom"/>
+        android:icon="@drawable/ic_share_gray_24dp"
+        app:showAsAction="always" />
     <item
         android:id="@+id/menuChangeTitle"
         android:title="@string/menu_changeTitle"/>

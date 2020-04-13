@@ -849,27 +849,32 @@ public class ReadArticleActivity extends BaseActionBarActivity {
 
         Date publishedAt = article.getPublishedAt();
         if (publishedAt != null) {
-            header.append(android.text.format.DateFormat.getDateFormat(this).format(publishedAt))
-                    .append(' ')
+
+            header.append(" · ")
+                    .append(android.text.format.DateFormat.getDateFormat(this).format(publishedAt))
+                    .append(" ")
                     .append(android.text.format.DateFormat.getTimeFormat(this).format(publishedAt));
         }
 
         if (!TextUtils.isEmpty(article.getAuthors())) {
-            header.append(' ');
+            header.append(" · ");
             header.append(escapeHtml(article.getAuthors()));
         }
 
-        header.append("<br>\n");
+        //header.append("<br>\n");
 
         int estimatedReadingTime = article.getEstimatedReadingTime(settings.getReadingSpeed());
-        header.append(escapeHtml(getString(R.string.content_estimatedReadingTime,
+        header.append(escapeHtml(" · " + getString(R.string.content_estimatedReadingTime,
                 estimatedReadingTime > 0 ? estimatedReadingTime : "< 1")));
 
+        header.append("<br/><br>");
+
         if (settings.isPreviewImageEnabled() && !TextUtils.isEmpty(article.getPreviewPictureURL())) {
-            header.append("<br>\n");
-            header.append("<img src=\"")
+
+            header.append("<br/><img src=\"")
                     .append(escapeHtml(article.getPreviewPictureURL()))
                     .append("\"/>");
+            header.append("<br>\n");
         }
 
         String headerString = header.toString();
@@ -954,7 +959,7 @@ public class ReadArticleActivity extends BaseActionBarActivity {
         loadingFinished = true;
 
         loadingPlaceholder.setVisibility(View.GONE);
-        bottomTools.setVisibility(View.VISIBLE);
+        //bottomTools.setVisibility(View.VISIBLE);
         hrBar.setVisibility(View.VISIBLE);
 
         // should there be a pause between visibility change and position restoration?
@@ -1470,3 +1475,5 @@ public class ReadArticleActivity extends BaseActionBarActivity {
     }
 
 }
+
+

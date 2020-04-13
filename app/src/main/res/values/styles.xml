@@ -44,6 +44,22 @@
         <item name="icon_autoplay">@drawable/ic_redo_24dp</item>
         <item name="icon_menu">@drawable/ic_menu_24dp</item>
         <item name="android:textColorPrimary">@color/darkContrastBlack</item>
+        <item name="android:actionOverflowButtonStyle">@style/MyActionButtonOverflow</item>
+        <item name="android:textViewStyle">@style/GraphikTextViewStyle</item>
+        <!-- Couleur de l'arrière plan principal -->
+        <item name="android:colorBackground">#FFFFFF</item>
+        <!-- Couleur de la barre d'action -->
+        <item name="colorPrimary">#FFFFFF</item>
+        <!-- Couleur du bouton retour dans la barre d'action -->
+        <item name="android:homeAsUpIndicator">@drawable/ic_back_arrow_gray_24dp</item>
+    </style>
+
+    <style name="GraphikTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/graphik</item>
+    </style>
+
+    <style name="MyActionButtonOverflow" parent="android:style/Widget.Holo.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_menu_three_dots_gray_24dp</item>
     </style>
 
     <style name="LightTheme.NoActionBar">

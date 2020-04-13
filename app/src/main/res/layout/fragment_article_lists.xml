@@ -7,14 +7,21 @@
     android:orientation="vertical"
     tools:context="fr.gaulupeau.apps.Poche.ui.MainActivity">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/articles_list_tab_layout"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize" />
-
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/articles_list_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_above="@+id/articles_list_tab_layout">
+
+    </androidx.viewpager.widget.ViewPager>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/articles_list_tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/tab_layout_border_top"
+        android:layout_alignParentBottom="true"
+        />
 
 </LinearLayout>

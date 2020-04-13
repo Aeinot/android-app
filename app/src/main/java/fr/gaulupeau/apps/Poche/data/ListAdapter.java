@@ -2,12 +2,19 @@ package fr.gaulupeau.apps.Poche.data;
 
 import android.content.Context;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.InputStream;
 import java.util.List;
 
 import fr.gaulupeau.apps.InThePoche.R;
@@ -56,6 +63,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         ImageView favourite;
         ImageView read;
         TextView readingTime;
+        ImageView preview;
 
         public ViewHolder(View itemView, OnItemClickListener listener) {
             super(itemView);
@@ -65,6 +73,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             favourite = (ImageView) itemView.findViewById(R.id.favourite);
             read = (ImageView) itemView.findViewById(R.id.read);
             readingTime = (TextView) itemView.findViewById(R.id.estimatedReadingTime);
+            preview = (ImageView) itemView.findViewById(R.id.previewImage);
             itemView.setOnClickListener(this);
         }
 
@@ -89,10 +98,21 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
                     showRead = article.getArchive();
                     break;
             }
-            favourite.setVisibility(showFavourite ? View.VISIBLE : View.GONE);
-            read.setVisibility(showRead ? View.VISIBLE : View.GONE);
+            //favourite.setVisibility(showFavourite ? View.VISIBLE : View.GONE);
+            //read.setVisibility(showRead ? View.VISIBLE : View.GONE);
+            favourite.setVisibility(View.GONE);
+            read.setVisibility(View.GONE);
             readingTime.setText(context.getString(R.string.listItem_estimatedReadingTime,
                     article.getEstimatedReadingTime(settings.getReadingSpeed())));
+
+            if (settings.isPreviewImageEnabled() && !TextUtils.isEmpty(article.getPreviewPictureURL())) {
+                new DownloadImageTask(preview).execute(article.getPreviewPictureURL());
+                preview.setVisibility(View.VISIBLE);
+            }
+            else {
+                preview.setVisibility(View.GONE);
+            }
+
         }
 
         @Override
@@ -103,5 +123,30 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     public interface OnItemClickListener {
         void onItemClick(int position);
+    }
+
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(result);
+        }
     }
 }

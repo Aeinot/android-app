@@ -1,3 +1,20 @@
+# wallabag - Android App - Aeinot's version
+
+This fork was made in order to quickly make changes to the application's UI, to make it more modern. 
+
+It is not intended to be stable, and even less to be maintained.
+
+## Screenshots
+
+[<img src="/readme/Wallabag%20Reading%20List.png" align="left"
+width="200"
+    hspace="10" vspace="10">](/readme/Wallabag%20Reading%20List%20Aeinot.png)
+[<img src="/readme/Wallabag%20Article%20View.png" align="center"
+width="200"
+    hspace="10" vspace="10">](/readme/Wallabag%20Article%20View%20Aeinot.png)
+
+
+
 # wallabag - Android App [![Build Status](https://travis-ci.org/wallabag/android-app.svg?branch=master)](https://travis-ci.org/wallabag/android-app)
 
 <img src="/readme/wallabag logo.png" align="left"

@@ -8,10 +8,10 @@ It is not intended to be stable, and even less to be maintained.
 
 [<img src="/readme/Wallabag%20Reading%20List.png" align="left"
 width="200"
-    hspace="10" vspace="10">](/readme/Wallabag%20Reading%20List%20Aeinot.png)
+    hspace="10" vspace="10">](/readme/Wallabag%20Reading%20List%20Aeinot.jpg)
 [<img src="/readme/Wallabag%20Article%20View.png" align="center"
 width="200"
-    hspace="10" vspace="10">](/readme/Wallabag%20Article%20View%20Aeinot.png)
+    hspace="10" vspace="10">](/readme/Wallabag%20Article%20View%20Aeinot.jpg)
 
 
 
